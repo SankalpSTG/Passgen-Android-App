@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/AllMainLayouts"
     android:layout_width="match_parent"
@@ -12,123 +11,62 @@
         android:orientation="vertical"
         tools:context=".Register">
 
-        <Button
-            android:id="@+id/register_register_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/register_answer_edit_text"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="20dp"
-            android:text="Register" />
+
 
         <Button
             android:id="@+id/register_login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/register_register_button"
+            android:layout_below="@id/login_password_edit_text"
             android:layout_centerInParent="true"
             android:layout_marginTop="3dp"
             android:text="Login" />
 
         <EditText
-            android:id="@+id/register_email_edit_text"
+            android:id="@+id/login_email_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/register_email_text_view"
+            android:layout_below="@id/login_email_text_view"
             android:hint="Enter your Email ID" />
 
 
         <EditText
-            android:id="@+id/register_username_edit_text"
+            android:id="@+id/login_password_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/register_username_text_view"
-            android:hint="Enter your Username" />
-
-        <EditText
-            android:id="@+id/register_password_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/register_password_text_view"
+            android:layout_below="@id/login_password_text_view"
             android:hint="Enter your Master Password" />
 
-        <EditText
-            android:id="@+id/register_confirm_password_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/register_confirm_password_text_view"
-            android:hint="Re-enter your Master Password" />
-
-        <EditText
-            android:id="@+id/register_answer_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/register_question_spinner"
-            android:hint="Your answer" />
-
-        <Spinner
-            android:id="@+id/register_question_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/register_security_question_text_view"
-            android:layout_marginTop="5dp" />
-
         <TextView
-            android:id="@+id/register_registration_text_view"
+            android:id="@+id/login_master_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Registration"
+            android:text="Login Master"
             android:layout_centerHorizontal="true"
             android:textAllCaps="true"
             android:textSize="25sp" />
 
 
         <TextView
-            android:id="@+id/register_email_text_view"
+            android:id="@+id/login_email_text_view"
             style="@style/AllHeadings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/register_registration_text_view"
+            android:layout_below="@id/login_master_text_view"
             android:text="Email"
             android:textAllCaps="true" />
 
         <TextView
-            android:id="@+id/register_username_text_view"
+            android:id="@+id/login_password_text_view"
             style="@style/AllHeadings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/register_email_edit_text"
-            android:text="Username"
-            android:textAllCaps="true" />
-
-        <TextView
-            android:id="@+id/register_password_text_view"
-            style="@style/AllHeadings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/register_username_edit_text"
+            android:layout_below="@id/login_email_edit_text"
             android:text="Password"
             android:textAllCaps="true" />
 
 
-        <TextView
-            android:id="@+id/register_confirm_password_text_view"
-            style="@style/AllHeadings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/register_password_edit_text"
-            android:text="Confirm Password"
-            android:textAllCaps="true" />
-
-        <TextView
-            android:id="@+id/register_security_question_text_view"
-            style="@style/AllHeadings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/register_confirm_password_edit_text"
-            android:text="Select your Security Question"
-            android:textAllCaps="true" />
 
     </RelativeLayout>
 </ScrollView>
