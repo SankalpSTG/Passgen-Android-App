@@ -1,5 +1,4 @@
 package com.smartn.passgen;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
