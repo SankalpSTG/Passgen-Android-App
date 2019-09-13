@@ -24,7 +24,6 @@
         android:textSize="8sp"
         android:paddingTop="5dp"
         android:layout_marginRight="4dp"
-
         android:layout_alignBottom="@+id/copy_in_list"
         android:text="Copy Password"/>
 

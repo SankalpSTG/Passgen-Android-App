@@ -25,19 +25,19 @@
             android:label="Update Master Password" />
         <activity
             android:name=".AddPassword"
-            android:label="New Password" />
+            android:label="Add New Password" />
         <activity
             android:name=".LoginMaster"
             android:label="Master Login" />
         <activity
             android:name=".Register"
-            android:label="New Registation" />
+            android:label="New Registration" />
         <activity
             android:name=".ScanCodeActivity"
             android:label="Scan QR Code" />
         <activity
             android:name=".Dashboard"
-            android:label="Passgen" />
+            android:label="PassGen" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
