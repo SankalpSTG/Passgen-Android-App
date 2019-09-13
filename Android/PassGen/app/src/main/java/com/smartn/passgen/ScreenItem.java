@@ -1,14 +1,37 @@
 package com.smartn.passgen;
 
-import androidx.appcompat.app.AppCompatActivity;
+public class ScreenItem {
 
-import android.os.Bundle;
+    String Title,Description;
+    int ScreenImg;
 
-public class ScreenItem extends AppCompatActivity {
+    public ScreenItem(String title, String description, int screenImg) {
+        Title = title;
+        Description = description;
+        ScreenImg = screenImg;
+    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void setTitle(String title) {
+        Title = title;
+    }
 
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public void setScreenImg(int screenImg) {
+        ScreenImg = screenImg;
+    }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public int getScreenImg() {
+        return ScreenImg;
     }
 }
