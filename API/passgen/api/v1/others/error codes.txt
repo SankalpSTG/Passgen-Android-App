@@ -5,3 +5,8 @@
 104 : User Already Exists
 105 : No Data Received
 106 : Failed To Register User
+107 : Incorrect Password
+108 : Account Is Registered With Different Device
+109 : Failed To Create Logs
+110 : Failed To Log in
+111 : User Doesnt Exist
