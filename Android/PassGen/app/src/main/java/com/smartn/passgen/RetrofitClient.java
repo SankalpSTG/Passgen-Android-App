@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient
 {
     private static final String
-            BASE_URL="http://192.168.43.88/passgen/api/v3/";
+            BASE_URL="http://192.168.16.111/passgen/api/v3/";
     private static RetrofitClient mInstance;
     private Retrofit retrofit;
 

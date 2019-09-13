@@ -1,18 +1,12 @@
 package com.smartn.passgen;
 
+
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,15 +17,21 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.core.view.MenuItemCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-import java.util.ArrayList;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -39,7 +39,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Dashbord extends AppCompatActivity
+public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Database DB;
@@ -52,7 +52,7 @@ public class Dashbord extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashbord);
+        setContentView(R.layout.activity_dashboard);
         //Databse code
         DB=new Database(this);
 
@@ -71,7 +71,7 @@ public class Dashbord extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(Dashbord.this,AddPassword.class);
+                Intent i=new Intent(Dashboard.this,AddPassword.class);
                 startActivity(i);
             }
         });
@@ -157,14 +157,14 @@ public class Dashbord extends AppCompatActivity
                             length--;
                         }
                     }
-                    adapter = new ListAdapter(Dashbord.this, newsItemList);
+                    adapter = new ListAdapter(Dashboard.this, newsItemList);
                     listView.setAdapter(adapter);
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             ListItem currentNews = newsItemList.get(position);
 
-                            Intent intent = new Intent(Dashbord.this, UpdatePassword.class);
+                            Intent intent = new Intent(Dashboard.this, UpdatePassword.class);
                             intent.putExtra("putitem", currentNews);
                             startActivity(intent);
                             finish();
@@ -256,14 +256,14 @@ public class Dashbord extends AppCompatActivity
                                     length--;
                                 }
                             }
-                            adapter = new ListAdapter(Dashbord.this, newsItemList);
+                            adapter = new ListAdapter(Dashboard.this, newsItemList);
                             listView.setAdapter(adapter);
                             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                     ListItem currentNews = newsItemList.get(position);
 
-                                    Intent intent = new Intent(Dashbord.this, UpdatePassword.class);
+                                    Intent intent = new Intent(Dashboard.this, UpdatePassword.class);
                                     intent.putExtra("putitem", currentNews);
                                     startActivity(intent);
                                     finish();
@@ -287,7 +287,7 @@ public class Dashbord extends AppCompatActivity
 
 
 
-                adapter = new ListAdapter(Dashbord.this, newsItemList);
+                adapter = new ListAdapter(Dashboard.this, newsItemList);
                 listView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 return true;
@@ -333,17 +333,17 @@ public class Dashbord extends AppCompatActivity
         int id=item.getItemId();
         if (id == R.id.dashbord) {
         } else if (id == R.id.scanweb) {
-            Intent i=new Intent(Dashbord.this,ScanCodeActivity.class);
+            Intent i=new Intent(Dashboard.this,ScanCodeActivity.class);
             startActivity(i);
         } else if (id == R.id.settings) {
-            Intent i=new Intent(Dashbord.this,SettingActivity.class);
+            Intent i=new Intent(Dashboard.this,SettingActivity.class);
             startActivity(i);
         }else if (id== R.id.logout){
             DB.deleteMasterPassword();
-            Intent i=new Intent(Dashbord.this,SignIn.class);
+            Intent i=new Intent(Dashboard.this,SignIn.class);
             startActivity(i);
         } else if (id == R.id.help) {
-            Intent i=new Intent(Dashbord.this,IntroActivity.class);
+            Intent i=new Intent(Dashboard.this,IntroActivity.class);
             startActivity(i);
         } else if (id == R.id.about) {
             //Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto","agamyaguitarclass@gmail.com", null));
