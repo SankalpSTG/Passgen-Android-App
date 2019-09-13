@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.smartn.passgen">
 
@@ -7,5 +8,29 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" />
+        android:theme="@style/AppTheme">
+        <activity android:name=".SignIn"></activity>
+        <activity android:name=".ScanCodeActivity" />
+        <activity android:name=".ScreenItem" />
+        <activity android:name=".ScreenIn" />
+        <activity android:name=".SettingActivity" />
+        <activity android:name=".IntroViewPageAdapter" />
+        <activity android:name=".Database" />
+        <activity android:name=".IntroActivity" />
+        <activity android:name=".RetrofitClient" />
+        <activity android:name=".RandomString" />
+        <activity android:name=".ListItem" />
+        <activity android:name=".ListAdapter" />
+        <activity android:name=".UpdatePassword" />
+        <activity android:name=".UpdateMaster" />
+        <activity android:name=".LoginRequestSQ" />
+        <activity android:name=".LoginRequestResponse" />
+        <activity android:name=".LoginRequest" />
+        <activity android:name=".LoginMaster" />
+        <activity android:name=".Register" />
+        <activity android:name=".Dashboard" />
+        <activity android:name=".AddPassword" />
+        <activity android:name=".MainActivity" />
+    </application>
+
 </manifest>
