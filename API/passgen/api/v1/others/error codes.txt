@@ -1,0 +1,5 @@
+100 : Validation Successful | 
+101 : Required All Parameters
+102 : Email Not Valid
+103 : Failed To Fetch Users
+104 : User Already Exists

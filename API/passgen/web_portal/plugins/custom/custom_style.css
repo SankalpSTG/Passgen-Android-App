@@ -1,0 +1,131 @@
+head, body{
+	position:relative;
+	text-align:center;
+	width:100%;
+	margin:0px auto;
+	background:url("../../resources/locks_blur.png");
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-size:100vw;
+}
+header{
+	position:fixed;
+	
+	width:100%;
+	margin:0px auto;
+	background-color:rgba(0, 0, 0, 0.3);
+	border-bottom:2px solid;
+	border-bottom-color:#aaa;
+}
+.c-header-in{
+	position:relative;
+	text-align:center;
+	width:100%;
+}
+.c-container{
+	position:relative;
+	text-align:center;
+	width:100%;
+	min-height:100vh;
+	margin:0px auto;
+}
+.c-margin{
+	position:relative;
+	text-align:center;
+	width:100%;
+	margin:0px auto;
+	height:200px;
+}
+.c-login-container{
+	position:relative;
+	text-align:center;
+	width:400px;
+	margin:0px auto;
+	background:rgba(0, 0, 0, 0.4);
+	border-radius:25px 25px 0px 0px;
+}
+.c-login-title-container{
+	position:relative;
+	text-align:center;
+	width:80%;
+	margin:0px auto;
+}
+.c-login-image{
+	position:relative;
+	text-align:center;
+	width:92px;
+	margin:0px auto;
+}
+.c-login-title{
+	position:relative;
+	text-align:center;
+	width:100%;
+	color:#fff;
+	font-family:Calisto MT;
+	font-size:36px;
+}
+.c-login-body-container{
+	position:relative;
+	text-align:center;
+	width:90%;
+	margin:0px auto;
+	background:rgba(0, 0, 0, 0.1);
+	border-radius:5px 5px 0px 0px;
+}
+.inputtype1{
+	position:relative;
+	text-align:center;
+	width:80%;
+	color:#fff;
+	background:rgba(0, 0, 0, 0.4);
+	margin:0px auto;
+	margin-top:10px;
+	margin-bottom:10px;
+	padding:6px;
+	padding-top:9px;
+	padding-bottom:6px;
+	border:0px;
+	border-bottom:1px solid;
+	border-bottom-color:#8bc34a;
+	border-radius:5px 5px 0px 0px;
+	transition:0.2s linear;
+}
+.inputtype1:hover, .inputtype1:focus{
+	background:rgba(0, 0, 0, 0.3);
+	border-bottom-color:#689f38;
+}
+.c-login-submit{
+	position:relative;
+	text-align:center;
+	background:rgba(0, 0, 0, 0);
+	width:100%;
+	border:0px;
+	padding:10px;
+	color:#fff;
+	font-size:20px;
+	transition:0.2s linear;
+}
+.c-login-footer-container{
+	position:relative;
+	text-align:center;
+	margin-top:10px;
+}
+.c-login-submit:hover{
+	background:rgba(0, 0, 0, 0.3);
+}
+.header-image{
+	position:relative;
+	width:70%;
+	margin-left:15%;
+	margin-right:15%;
+}
+footer{
+	position:relative;
+	text-align:center;
+	width:100%;
+	margin:0px auto;
+	border-top:1px solid;
+	border-top-color:#689f38;
+	color:#fff;
+	background:rgba(0, 0, 0, 0.7);
+}
