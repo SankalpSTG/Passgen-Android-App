@@ -9,7 +9,6 @@ public class sharedit {
     SharedPreferences.Editor editor;
     public sharedit(Context shr){
         this.shr = shr;
-
     }
     public void addpreference(String preference, String key){
         sharedPref = shr.getSharedPreferences("mitapp", Context.MODE_PRIVATE);
