@@ -28,8 +28,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="6sp"
-            android:src="@drawable/passgen_green_light"
-            android:visibility="invisible" />
+            android:src="@drawable/passgen_green_light" />
 
         <LinearLayout
             android:id="@+id/pass_linear"
