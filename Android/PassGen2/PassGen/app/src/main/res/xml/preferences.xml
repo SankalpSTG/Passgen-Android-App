@@ -48,6 +48,11 @@
             android:summary="v 2.0"
             android:title="version" />
 
+        <Preference
+            android:key="key_send_feedback"
+            android:summary="Send Feedback"
+            android:title="Feedback" />
+
 
         <!-- preference opens url in browser -->
 
