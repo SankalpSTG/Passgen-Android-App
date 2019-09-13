@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="40dp"
+    tools:context=".UpdateMaster">
+    <TextView
+        android:id="@+id/oldpasswordtxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Old password"
+        style="@style/LabelHeadingTextSize"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/etxt_old_master_password_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your old master password"
+        android:layout_marginTop="20dp"
+        style="@style/AllTextsSize"
+        android:inputType="textPassword"
+        />
+
+    <TextView
+        android:id="@+id/newpasswordtxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/LabelHeadingTextSize"
+        android:text="New Password"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/etxt_new_master_password_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your new master passsword"
+        android:layout_marginTop="20dp"
+        style="@style/AllTextsSize"
+        android:inputType="textPassword"/>
+
+    <TextView
+        android:id="@+id/confirmpassword2txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirm Password"
+        style="@style/LabelHeadingTextSize"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/etxt_new_master_password2_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/AllTextsSize"
+        android:hint="Enter your new master password again"
+        android:layout_marginTop="20dp"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="update"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/cutom_round_button"
+        android:textColor="@color/color_white"
+        android:onClick="updateMaster"/>
+
+</LinearLayout>
+</ScrollView>
