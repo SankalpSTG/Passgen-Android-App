@@ -1,13 +1,40 @@
 package com.smartn.passgen;
 
-import androidx.appcompat.app.AppCompatActivity;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-import android.os.Bundle;
+public class RetrofitClient
+{
+    private static final String
+            BASE_URL="http://192.168.43.88/passgen/api/v3/";
+    private static RetrofitClient mInstance;
+    private Retrofit retrofit;
 
-public class RetrofitClient extends AppCompatActivity {
+    private RetrofitClient()
+    {
+        retrofit=new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    }
+
+    public static synchronized RetrofitClient getInstance()
+    {
+        if (mInstance==null)
+        {
+            mInstance = new RetrofitClient();
+        }
+        return mInstance;
+    }
+
+    public ApiMaster getApiMaster()
+    {
+        return retrofit.create(ApiMaster.class);
+    }
+
+    public ApiPassword getApiPassword() {
+        return retrofit.create(ApiPassword.class);
     }
 }
+

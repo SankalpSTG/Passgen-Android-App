@@ -1,14 +1,18 @@
 package com.smartn.passgen;
 
-import androidx.appcompat.app.AppCompatActivity;
+import java.io.Serializable;
 
-import android.os.Bundle;
+public class ListItem implements Serializable {
 
-public class ListItem extends AppCompatActivity {
+    String website,username,password;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_item);
+    public String toString()
+    {
+        return website;
+    }
+
+    public String getWebsite() {
+        return website;
     }
 }
