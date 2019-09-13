@@ -1,6 +1,6 @@
 <?php
-	function validation($unique_id, $device_id, $master_password){
-		include "connections/database/dbh.inc.php";
+	function validate($unique_id, $device_id, $master_password){
+		require "connections/database/dbh.inc.php";
 		$message = array();
 		if(empty($unique_id) || empty($device_id) || empty($master_password)){
 			$message = array("error" => true, "error_code" => 101, "error_message" => "Required All Parameters");
@@ -11,7 +11,7 @@
 		}else{
 			$stmt = $conn->prepare("SELECT serial_id FROM pg_users WHERE unique_id = ?");
 			$stmt->bind_param("s", $unique_id);
-			if($stmt->execute();){
+			if($stmt->execute()){
 				$result = $stmt->get_result();
 				$stmt->close();
 				if(mysqli_num_rows($result) == 0){

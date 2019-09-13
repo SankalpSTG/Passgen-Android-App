@@ -1,5 +1,7 @@
-100 : Validation Successful | 
+100 : Validation Successful | Non Imp Validated | 
 101 : Required All Parameters
 102 : Email Not Valid
 103 : Failed To Fetch Users
 104 : User Already Exists
+105 : No Data Received
+106 : Failed To Register User
