@@ -8,4 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AllMainLayouts">
+        <item name="android:layout_margin">25dp</item>
+    </style>
+
+    <style name="AllHeadings">
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:color">#575252</item>
+    </style>
 </resources>
