@@ -1,4 +1,5 @@
 package com.smartn.passgen;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.provider.Settings;
@@ -10,10 +11,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.IOException;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,7 +37,7 @@ public class LoginMaster extends AppCompatActivity {
         //initilize
         eye_1 = findViewById(R.id.pass_dola);
         DB = new Database(this);
-        etxtpassword = (EditText)findViewById(R.id.login_password_edit_text);
+        etxtpassword = (EditText)findViewById(R.id.etxt_password_login_main);
     }
 
     public void showPassword(View view){
@@ -122,4 +127,3 @@ public class LoginMaster extends AppCompatActivity {
         }
     }
 }
-
