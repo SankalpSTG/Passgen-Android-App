@@ -1,72 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView"
-        tools:context=".LoginMaster"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:context=".LoginMaster">
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".LoginMaster">
+
+        <Button
+            android:id="@+id/btn_login_master"
+            android:layout_width="180sp"
+            android:layout_height="36sp"
+            android:layout_below="@id/pass_linear"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="6sp"
+            android:background="@drawable/custom_round_button"
+            android:onClick="login_master"
+            android:text="Login"
+            android:textColor="@color/color_white" />
+
+        <ImageView
+            android:id="@+id/reg_logo"
+            android:layout_width="128sp"
+            android:layout_height="128sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="6sp"
+            android:src="@drawable/passgen_green_light"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:id="@+id/pass_linear"
+            android:layout_width="270sp"
+            android:layout_height="54sp"
+            android:layout_below="@id/loginscrn"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="6sp">
+
+            <EditText
+                android:id="@+id/etxt_password_login_main"
+                android:layout_width="216sp"
+                android:layout_height="54sp"
+                android:layout_below="@id/loginscrn"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="6sp"
+                android:ems="10"
+                android:hint="Enter your Master password"
+                android:inputType="textPassword" />
 
             <ImageView
-                android:visibility="invisible"
-                android:id="@+id/reg_logo"
-                android:layout_width="128sp"
-                android:layout_height="128sp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="6sp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/passgen_green_light" />
-            <TextView
-                android:id="@+id/loginscrn"
-                android:layout_width="match_parent"
-                android:layout_height="54sp"
-                android:gravity="center"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/reg_logo"
-                android:text="Enter Master Password"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-            <LinearLayout
-                android:id="@+id/pass_linear"
-                android:layout_width="270sp"
-                android:layout_height="54sp"
-                android:layout_margin="6sp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/loginscrn">
-                <EditText
-                    android:id="@+id/etxt_password_login_main"
-                    android:layout_width="216sp"
-                    android:layout_height="54sp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="6sp"
-                    android:ems="10"
-                    android:layout_below="@id/loginscrn"
-                    android:hint="Enter your Master password"
-                    android:inputType="textPassword" />
-                <ImageView
-                    android:id="@+id/pass_dola"
-                    android:layout_width="36sp"
-                    android:layout_height="36sp"
-                    android:layout_margin="9sp"
-                    android:onClick="showPassword"
-                    android:src="@drawable/password_eye"/>
-            </LinearLayout>
-            <Button
-                android:id="@+id/btn_login_master"
-                android:layout_width="180sp"
+                android:id="@+id/pass_dola"
+                android:layout_width="36sp"
                 android:layout_height="36sp"
-                android:layout_margin="6sp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/pass_linear"
-                android:background="@drawable/custom_round_button"
-                android:onClick="login_master"
-                android:text="Login"
-                android:textColor="@color/color_white" />
-        </RelativeLayout>
-    </ScrollView>
+                android:layout_margin="9sp"
+                android:onClick="showPassword"
+                android:src="@drawable/password_eye" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/loginscrn"
+            android:layout_width="match_parent"
+            android:layout_height="54sp"
+            android:layout_below="@id/reg_logo"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="Enter Master Password"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</ScrollView>
