@@ -1,5 +1,4 @@
 package com.smartn.passgen;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.provider.Settings;
@@ -13,12 +12,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
