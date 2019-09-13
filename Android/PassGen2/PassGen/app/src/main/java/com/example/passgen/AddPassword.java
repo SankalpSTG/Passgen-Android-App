@@ -49,7 +49,7 @@ public class AddPassword extends AppCompatActivity {
         autogenerate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String pass=RandomString.getAlphaNumericString(8);
+                String pass=RandomString.getpassword(12);
                 etxtpassword1.setText(pass);
                 etxtpassword2.setText(pass);
 
