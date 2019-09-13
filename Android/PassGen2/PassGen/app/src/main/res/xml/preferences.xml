@@ -29,14 +29,14 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="Notification">
+    <!--<PreferenceCategory android:title="Notification">
 
         <SwitchPreference
             android:defaultValue="true"
             android:key="notifications_new_message"
             android:title="New notification sound" />
 
-    </PreferenceCategory>
+    </PreferenceCategory>-->
 
     <PreferenceCategory android:title="About">
 
