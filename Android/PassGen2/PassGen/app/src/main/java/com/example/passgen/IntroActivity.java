@@ -39,17 +39,7 @@ public class IntroActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        // when this activity is about to be launch we need to check if its openened before or not
 
- /*       if (restorePrefData()) {
-
-            Intent mainActivity = new Intent(getApplicationContext(),MainActivity.class );
-            startActivity(mainActivity);
-            finish();
-
-
-        }
-*/
         setContentView(R.layout.activity_intro);
 
         // hide the action bar
@@ -176,28 +166,6 @@ public class IntroActivity extends AppCompatActivity {
 
 
     }
-/*
-    private boolean restorePrefData() {
-
-
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
-        Boolean isIntroActivityOpnendBefore = pref.getBoolean("isIntroOpnend",false);
-        return  isIntroActivityOpnendBefore;
-
-
-
-    }
-
-    private void savePrefsData() {
-
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putBoolean("isIntroOpnend",true);
-        editor.commit();
-
-
-    }
-*/
     // show the GETSTARTED Button and hide the indicator and the next button
     private void loaddLastScreen() {
 
