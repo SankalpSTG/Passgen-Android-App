@@ -11,8 +11,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -212,7 +210,7 @@ public class UpdatePassword extends AppCompatActivity {
                             if(code==100) {
                                 Log.d("Android","getting response sucessful "+respo);
                                 finish();
-                                Intent intent = new Intent(UpdatePassword.this, Dashbord.class);
+                                Intent intent = new Intent(UpdatePassword.this, Dashboard.class);
                                 startActivity(intent);
                             }
                         } catch (IOException e) {
@@ -272,7 +270,7 @@ public class UpdatePassword extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finish();
-        Intent intent = new Intent(UpdatePassword.this, Dashbord.class);
+        Intent intent = new Intent(UpdatePassword.this, Dashboard.class);
         startActivity(intent);
     }
 }

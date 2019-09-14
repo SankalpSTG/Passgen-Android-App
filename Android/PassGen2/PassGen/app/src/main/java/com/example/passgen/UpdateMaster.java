@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -91,7 +90,7 @@ public class UpdateMaster extends AppCompatActivity {
                             Log.d("Android","code 100");
                             Toast.makeText(getApplicationContext(), "Updated Sucessful",
                                     Toast.LENGTH_SHORT).show();
-                            Intent i=new Intent(UpdateMaster.this,Dashbord.class);
+                            Intent i=new Intent(UpdateMaster.this, Dashboard.class);
                             startActivity(i);
                             finish();
                         }

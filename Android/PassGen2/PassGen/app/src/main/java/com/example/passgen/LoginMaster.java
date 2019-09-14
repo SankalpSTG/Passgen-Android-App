@@ -6,7 +6,6 @@ import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -96,7 +95,7 @@ public class LoginMaster extends AppCompatActivity {
                                 Log.d("Android","code 100");
                                 Toast.makeText(getApplicationContext(), "Log-In Successful",
                                         Toast.LENGTH_SHORT).show();
-                                Intent i=new Intent(LoginMaster.this,Dashbord.class);
+                                Intent i=new Intent(LoginMaster.this, Dashboard.class);
                                 startActivity(i);
                                 finish();
                             }

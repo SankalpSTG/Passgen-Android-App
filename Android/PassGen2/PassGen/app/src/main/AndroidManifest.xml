@@ -37,7 +37,7 @@
             android:name=".ScanCodeActivity"
             android:label="Scan QR Code" />
         <activity
-            android:name=".Dashbord"
+            android:name=".Dashboard"
             android:label="Passgen" />
         <activity
             android:name=".MainActivity"

@@ -1,7 +1,6 @@
 package com.example.passgen;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -71,7 +70,7 @@ public class SignIn extends AppCompatActivity {
                         if(code==100) {
                             Log.d("Android","code 100 login sucessful");
                             setDB();
-                            Intent i=new Intent(SignIn.this,Dashbord.class);
+                            Intent i=new Intent(SignIn.this, Dashboard.class);
                             startActivity(i);
                             finish();
                         }

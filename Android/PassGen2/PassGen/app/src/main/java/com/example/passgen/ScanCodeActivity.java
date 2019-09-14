@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -94,7 +93,7 @@ public class ScanCodeActivity extends Activity implements ZXingScannerView.Resul
                                 .OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent i = new Intent(ScanCodeActivity.this, Dashbord.class);
+                                Intent i = new Intent(ScanCodeActivity.this, Dashboard.class);
                                 startActivity(i);
                                 finish();
                             }

@@ -9,9 +9,6 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -112,7 +109,7 @@ public class AddPassword extends AppCompatActivity {
                         String message = respoJ.getString("message");
                         if(code==100) {
                             Log.d("Android","getting response sucessful");
-                            Intent i = new Intent(AddPassword.this, Dashbord.class);
+                            Intent i = new Intent(AddPassword.this, Dashboard.class);
                             startActivity(i);
                             finish();
                         }
