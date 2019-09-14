@@ -37,7 +37,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Dashbord extends AppCompatActivity
+public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Database DB;
@@ -69,7 +69,7 @@ public class Dashbord extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(Dashbord.this,AddPassword.class);
+                Intent i=new Intent(Dashboard.this,AddPassword.class);
                 startActivity(i);
             }
         });
@@ -82,7 +82,7 @@ public class Dashbord extends AppCompatActivity
 
         Cursor res = DB.getAllDataPassword();
         if (res.getCount() == 0) {
-            Toast.makeText(Dashbord.this, "No data found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Dashboard.this, "No data found", Toast.LENGTH_SHORT).show();
             return;
         }
         while (res.moveToNext()) {
@@ -96,13 +96,13 @@ public class Dashbord extends AppCompatActivity
             news.password = password;
             newsItemList.add(news);
         }
-        adapter = new ListAdapter(Dashbord.this, newsItemList);
+        adapter = new ListAdapter(Dashboard.this, newsItemList);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ListItem currentNews = newsItemList.get(position);
-                Intent intent = new Intent(Dashbord.this, UpdatePassword.class);
+                Intent intent = new Intent(Dashboard.this, UpdatePassword.class);
                 intent.putExtra("putitem", currentNews);
                 startActivity(intent);
             }
@@ -116,7 +116,7 @@ public class Dashbord extends AppCompatActivity
         Cursor res = DB.getAllDataMaster();
         res.moveToFirst();
         String unicid = res.getString(0);
-        Log.d("Dashbord","getting unic id from databse "+unicid);
+        Log.d("Dashboard","getting unic id from databse "+unicid);
         String auth=RandomString.getAlphaNumericString(10);
         String device = Settings.Secure.getString(getContentResolver(),
                 Settings.Secure.ANDROID_ID);
@@ -155,14 +155,14 @@ public class Dashbord extends AppCompatActivity
                             length--;
                         }
                     }
-                    adapter = new ListAdapter(Dashbord.this, newsItemList);
+                    adapter = new ListAdapter(Dashboard.this, newsItemList);
                     listView.setAdapter(adapter);
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             ListItem currentNews = newsItemList.get(position);
 
-                            Intent intent = new Intent(Dashbord.this, UpdatePassword.class);
+                            Intent intent = new Intent(Dashboard.this, UpdatePassword.class);
                             intent.putExtra("putitem", currentNews);
                             startActivity(intent);
                             finish();
@@ -215,7 +215,7 @@ public class Dashbord extends AppCompatActivity
                 Cursor res = DB.getAllDataMaster();
                 res.moveToFirst();
                 String unicid = res.getString(0);
-                Log.d("Dashbord","getting unic id from databse "+unicid);
+                Log.d("Dashboard","getting unic id from databse "+unicid);
                 String auth=RandomString.getAlphaNumericString(10);
                 String device = Settings.Secure.getString(getContentResolver(),
                         Settings.Secure.ANDROID_ID);
@@ -254,14 +254,14 @@ public class Dashbord extends AppCompatActivity
                                     length--;
                                 }
                             }
-                            adapter = new ListAdapter(Dashbord.this, newsItemList);
+                            adapter = new ListAdapter(Dashboard.this, newsItemList);
                             listView.setAdapter(adapter);
                             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                     ListItem currentNews = newsItemList.get(position);
 
-                                    Intent intent = new Intent(Dashbord.this, UpdatePassword.class);
+                                    Intent intent = new Intent(Dashboard.this, UpdatePassword.class);
                                     intent.putExtra("putitem", currentNews);
                                     startActivity(intent);
                                     finish();
@@ -285,7 +285,7 @@ public class Dashbord extends AppCompatActivity
 
 
 
-                adapter = new ListAdapter(Dashbord.this, newsItemList);
+                adapter = new ListAdapter(Dashboard.this, newsItemList);
                 listView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 return true;
@@ -331,17 +331,17 @@ public class Dashbord extends AppCompatActivity
         int id=item.getItemId();
         if (id == R.id.dashbord) {
         } /*else if (id == R.id.scanweb) {
-            Intent i=new Intent(Dashbord.this,ScanCodeActivity.class);
+            Intent i=new Intent(Dashboard.this,ScanCodeActivity.class);
             startActivity(i);
         } else if (id == R.id.settings) {
-            Intent i=new Intent(Dashbord.this,SettingActivity.class);
+            Intent i=new Intent(Dashboard.this,SettingActivity.class);
             startActivity(i);
         }*/else if (id== R.id.logout){
             DB.deleteMasterPassword();
-            Intent i=new Intent(Dashbord.this,SignIn.class);
+            Intent i=new Intent(Dashboard.this,SignIn.class);
             startActivity(i);
         } else if (id == R.id.help) {
-            Intent i=new Intent(Dashbord.this,IntroActivity.class);
+            Intent i=new Intent(Dashboard.this,IntroActivity.class);
             startActivity(i);
         } else if (id == R.id.about) {
             //Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto","agamyaguitarclass@gmail.com", null));
