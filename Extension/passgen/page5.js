@@ -26,7 +26,7 @@ function verifymp(){
 			}
 		}
 	}
-	xmlhttp.open("GET","http://localhost/passgen/api/v3/ext_verify_mp.php?device_id="+deviceid + "&master_password="+masterpassword,true);
+	xmlhttp.open("GET","http://192.168.43.88/passgen/api/v3/ext_verify_mp.php?device_id="+deviceid + "&master_password="+masterpassword,true);
 	xmlhttp.send(deviceid);
 }
 

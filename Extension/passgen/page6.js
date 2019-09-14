@@ -26,7 +26,7 @@ function authenticateuser(){
 			}
 		}
 	}
-	xmlhttp.open("GET","http://localhost/passgen/api/v3/get_access.php?device_id="+deviceid,true);
+	xmlhttp.open("GET","http://192.168.43.88/passgen/api/v3/get_access.php?device_id="+deviceid,true);
 	xmlhttp.send(deviceid);
 }
 function reshowcode(){

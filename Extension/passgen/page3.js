@@ -38,7 +38,7 @@ function userSelected(){
 			}
 		}
 	}
-	xmlhttp.open("GET","http://localhost/passgen/api/v3/ext_get_password.php?device_id="+deviceid + "&url="+url + "&user_name="+optedValue,true);
+	xmlhttp.open("GET","http://192.168.43.88/passgen/api/v3/ext_get_password.php?device_id="+deviceid + "&url="+url + "&user_name="+optedValue,true);
 	xmlhttp.send(deviceid);
 }
 function getUserNames(){
@@ -64,7 +64,7 @@ function getUserNames(){
 			fillUsersToOptions(users);
 		}
 	}
-	xmlhttp.open("GET","http://localhost/passgen/api/v3/ext_search_user.php?device_id="+deviceid + "&url="+url,true);
+	xmlhttp.open("GET","http://192.168.43.88/passgen/api/v3/ext_search_user.php?device_id="+deviceid + "&url="+url,true);
 	xmlhttp.send(deviceid);
 }
 function fillUsersToOptions(users){
