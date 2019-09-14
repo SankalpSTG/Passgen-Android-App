@@ -334,7 +334,8 @@ public class Dashbord extends AppCompatActivity
             Intent i=new Intent(Dashbord.this,ScanCodeActivity.class);
             startActivity(i);
         } else if (id == R.id.settings) {
-
+            Intent i=new Intent(Dashbord.this,SettingActivity.class);
+            startActivity(i);
         }else if (id== R.id.logout){
             DB.deleteMasterPassword();
             Intent i=new Intent(Dashbord.this,SignIn.class);
