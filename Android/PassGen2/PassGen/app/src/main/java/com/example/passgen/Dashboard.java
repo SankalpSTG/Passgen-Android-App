@@ -1,5 +1,6 @@
 package com.example.passgen;
 
+import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
@@ -46,6 +47,7 @@ public class Dashboard extends AppCompatActivity
     ListAdapter adapter;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
+    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +55,9 @@ public class Dashboard extends AppCompatActivity
         setContentView(R.layout.activity_dashbord);
         //Databse code
         DB=new Database(this);
-
+        pd = new ProgressDialog(Dashboard.this);
+        pd.setMessage("please wait...");
+        pd.setCancelable(false);
         //drawer code
         drawerLayout = (DrawerLayout) findViewById(R.id.dashbord);
         toggle=new ActionBarDrawerToggle(this, drawerLayout ,R.string.opend,R.string.closed);
@@ -73,7 +77,7 @@ public class Dashboard extends AppCompatActivity
                 startActivity(i);
             }
         });
-
+        pd.show();
         refresh();
 
     }
@@ -156,7 +160,7 @@ public class Dashboard extends AppCompatActivity
                 return;
             }
         });
-
+        pd.dismiss();
     }
 
 

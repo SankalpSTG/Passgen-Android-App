@@ -55,7 +55,9 @@ public class Web extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if(actionId== EditorInfo.IME_ACTION_DONE){
-                    try {
+
+                    goToUrl(webAddress.getText().toString());
+                    /*try {
                         String domain = getDomainName(webAddress.getText().toString());
                         //server code
                         Cursor res = DB.getAllDataMaster();
@@ -103,8 +105,7 @@ public class Web extends AppCompatActivity {
 
                     } catch (URISyntaxException e) {
                         e.printStackTrace();
-                    }
-                    goToUrl(webAddress.getText().toString());
+                    }*/
                 }
                 return false;
             }

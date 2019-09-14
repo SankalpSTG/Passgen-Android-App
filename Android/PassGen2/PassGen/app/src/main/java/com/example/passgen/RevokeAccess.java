@@ -29,8 +29,8 @@ public class RevokeAccess extends AppCompatActivity {
         setContentView(R.layout.activity_revoke_access);
         DB=new Database(this);
         AlertDialog.Builder builder = new AlertDialog.Builder(RevokeAccess.this);
-        builder.setTitle("Delete Password!");
-        builder.setMessage(" Do you really want to delete ?");
+        builder.setTitle("Revoke access!");
+        builder.setMessage(" Do you really want to revoke?");
         builder.setCancelable(false);
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
