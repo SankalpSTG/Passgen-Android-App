@@ -6,17 +6,18 @@
     android:layout_height="match_parent"
     android:background="@drawable/custom_splash"
     android:orientation="vertical"
-    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
     android:padding="100dp"
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/iv_logo"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:layout_centerHorizontal="true"
         android:layout_above="@+id/iv_logo_text"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/passgen_white" />
+
     <ImageView
         android:id="@+id/iv_logo_text"
         android:layout_width="180dp"
