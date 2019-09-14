@@ -94,7 +94,7 @@ public class LoginMaster extends AppCompatActivity {
                             String message = respoJ.getString("message");
                             if(code==100) {
                                 Log.d("Android","code 100");
-                                Toast.makeText(getApplicationContext(), "Log-In Sucessful",
+                                Toast.makeText(getApplicationContext(), "Log-In Successful",
                                         Toast.LENGTH_SHORT).show();
                                 Intent i=new Intent(LoginMaster.this,Dashbord.class);
                                 startActivity(i);
