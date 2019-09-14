@@ -16,8 +16,8 @@
         <activity android:name=".LoginRequest" />
         <activity
             android:name=".UpdatePassword"
-            android:label="@string/title_activity_update_password"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="Update Password"
+             />
         <activity
             android:name=".SignIn"
             android:label="Sign In" />
