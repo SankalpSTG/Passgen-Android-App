@@ -110,7 +110,7 @@ public class LoginMaster extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
                         Toast.makeText(getApplicationContext(),
-                                "Registration Failed!!!",
+                                "Login Failed!!!",
                                 Toast.LENGTH_SHORT).show();
                         return;
                     }
