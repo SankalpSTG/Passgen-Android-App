@@ -330,13 +330,13 @@ public class Dashboard extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id=item.getItemId();
         if (id == R.id.dashbord) {
-        } /*else if (id == R.id.scanweb) {
+        } else if (id == R.id.scanweb) {
             Intent i=new Intent(Dashboard.this,ScanCodeActivity.class);
             startActivity(i);
         } else if (id == R.id.settings) {
             Intent i=new Intent(Dashboard.this,SettingActivity.class);
             startActivity(i);
-        }*/else if (id== R.id.logout){
+        }else if (id== R.id.logout){
             DB.deleteMasterPassword();
             Intent i=new Intent(Dashboard.this,SignIn.class);
             startActivity(i);
