@@ -61,4 +61,12 @@ public interface ApiMaster
             @Field("device_id") String deviceid,
             @Field("secret_answer") String secret_answer
     );
+    @FormUrlEncoded
+    @POST("revoke_access.php")
+    Call<ResponseBody> revoke_access(
+            @Field("unique_id") String unicid,
+            @Field("device_id") String deviceid,
+            @Field("auth_key") String authkey
+    );
+
 }
