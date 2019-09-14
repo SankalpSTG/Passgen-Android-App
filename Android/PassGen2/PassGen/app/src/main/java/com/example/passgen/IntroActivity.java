@@ -59,8 +59,8 @@ public class IntroActivity extends AppCompatActivity {
         mList.add(new ScreenItem(R.drawable.image1));
         mList.add(new ScreenItem(R.drawable.page_1_png));
         mList.add(new ScreenItem(R.drawable.page_2_png));
-        mList.add(new ScreenItem(R.drawable.page_2_png));
-        mList.add(new ScreenItem(R.drawable.page_2_png));
+        mList.add(new ScreenItem(R.drawable.page_3_png));
+        mList.add(new ScreenItem(R.drawable.page_4_png));
 
 
 
