@@ -57,13 +57,13 @@ public class Web extends AppCompatActivity {
                 if(actionId== EditorInfo.IME_ACTION_DONE){
 
                     goToUrl(webAddress.getText().toString());
-                    /*try {
+                    try {
                         String domain = getDomainName(webAddress.getText().toString());
                         //server code
                         Cursor res = DB.getAllDataMaster();
                         res.moveToFirst();
                         String unicid = res.getString(0);
-                        Log.d("Dashboard","getting unic id from databse "+unicid);
+                        Log.d("Dashboard","getting unic id from databse "+domain);
                         String auth=RandomString.getAlphaNumericString(10);
                         String device = Settings.Secure.getString(getContentResolver(),
                                 Settings.Secure.ANDROID_ID);
@@ -81,6 +81,7 @@ public class Web extends AppCompatActivity {
                                     respo = response.body().string();
                                     JSONObject respoJ = new JSONObject(respo);
                                     JSONArray ja_data = respoJ.getJSONArray("data");
+                                    Log.d("Web",""+respoJ);
                                             JSONObject jsonObj = ja_data.getJSONObject(0);
                                             String name=jsonObj.getString("name");
                                             String pass=jsonObj.getString("password");
@@ -105,7 +106,7 @@ public class Web extends AppCompatActivity {
 
                     } catch (URISyntaxException e) {
                         e.printStackTrace();
-                    }*/
+                    }
                 }
                 return false;
             }
@@ -116,6 +117,49 @@ public class Web extends AppCompatActivity {
                 String url = request.getUrl().toString();
                 try {
                     String domain = getDomainName(url);
+                    //server code
+                    Cursor res = DB.getAllDataMaster();
+                    res.moveToFirst();
+                    String unicid = res.getString(0);
+                    Log.d("Dashboard","getting unic id from databse "+unicid);
+                    String auth=RandomString.getAlphaNumericString(10);
+                    String device = Settings.Secure.getString(getContentResolver(),
+                            Settings.Secure.ANDROID_ID);
+                    Call<ResponseBody> call= RetrofitClient.getInstance()
+                            .getApiPassword()
+                            .search_user_url(unicid,auth,device,domain);
+                    Log.d("Add Password","Getting Respons");
+                    call.enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            Log.d("Android","onresponse method");
+                            String respo = "";
+                            try {
+
+                                respo = response.body().string();
+                                JSONObject respoJ = new JSONObject(respo);
+                                JSONArray ja_data = respoJ.getJSONArray("data");
+                                JSONObject jsonObj = ja_data.getJSONObject(0);
+                                String name=jsonObj.getString("name");
+                                String pass=jsonObj.getString("password");
+                                String url=jsonObj.getString("url");
+                                txtusername.setText(name);
+                                txtpassword.setText(pass);
+                                Log.d("Dashboard", "Json Data : " + name+"\n"+pass+"\n"+url);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(),
+                                    "Connection Error!!!",
+                                    Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    });
 
                 } catch (URISyntaxException e) {
                     e.printStackTrace();

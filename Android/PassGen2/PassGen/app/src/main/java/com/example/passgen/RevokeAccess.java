@@ -70,6 +70,7 @@ public class RevokeAccess extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        finish();
                     }
 
                     @Override
