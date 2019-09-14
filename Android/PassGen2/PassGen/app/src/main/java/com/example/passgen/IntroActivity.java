@@ -66,12 +66,16 @@ public class IntroActivity extends AppCompatActivity {
         // fill list screen
 
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Fresh Food","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.image1));
-        mList.add(new ScreenItem("Fast Delivery","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.img2));
-        mList.add(new ScreenItem("Easy Payment","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.img3));
-        mList.add(new ScreenItem("Fresh Food","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.image1));
-        mList.add(new ScreenItem("Fast Delivery","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.img2));
-        mList.add(new ScreenItem("Easy Payment","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.img3));
+        mList.add(new ScreenItem(R.drawable.image1));
+        //mList.add(new ScreenItem(R.drawable.image2));
+        //mList.add(new ScreenItem(R.drawable.image3));
+        //mList.add(new ScreenItem(R.drawable.image4));
+        //mList.add(new ScreenItem(R.drawable.image5));
+        //mList.add(new ScreenItem(R.drawable.image6));
+        //mList.add(new ScreenItem(R.drawable.image7));
+        //mList.add(new ScreenItem(R.drawable.image8));
+        //mList.add(new ScreenItem(R.drawable.image9));
+        //mList.add(new ScreenItem(R.drawable.image10));
 
         // setup viewpager
         screenPager =findViewById(R.id.screen_viewpager);
@@ -110,9 +114,6 @@ public class IntroActivity extends AppCompatActivity {
 
             }
         });
-
-        // tablayout add change listener
-
 
         tabIndicator.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
             @Override
