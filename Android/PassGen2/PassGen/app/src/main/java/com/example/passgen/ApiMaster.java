@@ -38,11 +38,27 @@ public interface ApiMaster
             @Field("auth_key") String authkey,
             @Field("master_password") String masterpassword
     );
+
     @FormUrlEncoded
     @POST("share_access.php")
     Call<ResponseBody> share_access(
             @Field("unique_id") String unicid,
             @Field("device_id") String deviceid,
             @Field("auth_key") String authkey
+    );
+
+    @FormUrlEncoded
+    @POST("mobile_change_request_login.php")
+    Call<ResponseBody> mobile_change_request_login(
+            @Field("unique_id") String unicid,
+            @Field("master_password") String masterpassword
+    );
+
+    @FormUrlEncoded
+    @POST("mobile_change_request.php")
+    Call<ResponseBody> mobile_change_request(
+            @Field("unique_id") String unicid,
+            @Field("device_id") String deviceid,
+            @Field("secret_answer") String secret_answer
     );
 }
