@@ -75,7 +75,7 @@ public class UpdatePassword extends AppCompatActivity {
         autogenrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String pass=RandomString.getAlphaNumericString(8);
+                String pass=RandomString.getpassword(12);
                 etxtpassword1.setText(pass);
                 etxtpassword2.setText(pass);
 
@@ -237,7 +237,7 @@ public class UpdatePassword extends AppCompatActivity {
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
                         pd.dismiss();
                         Toast.makeText(getApplicationContext(),
-                                "Registration Failed!!!",
+                                "Connection Failed!!!",
                                 Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -248,10 +248,10 @@ public class UpdatePassword extends AppCompatActivity {
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                pd.dismiss();
             }
         });
-
+        pd.dismiss();
         builder.show();
     }
     @Override

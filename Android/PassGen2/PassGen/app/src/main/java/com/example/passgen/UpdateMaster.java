@@ -117,7 +117,7 @@ public class UpdateMaster extends AppCompatActivity {
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
                     pd.dismiss();
                     Toast.makeText(getApplicationContext(),
-                            "Registration Failed!!!",
+                            "Connection Failed!!!",
                             Toast.LENGTH_SHORT).show();
                     return;
                 }

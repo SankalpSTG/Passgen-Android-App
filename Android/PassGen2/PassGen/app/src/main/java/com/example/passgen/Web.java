@@ -1,5 +1,7 @@
 package com.example.passgen;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.provider.Settings;
@@ -36,17 +38,16 @@ import retrofit2.Response;
 public class Web extends AppCompatActivity {
 
     EditText webAddress;
+    TextView txtusername,txtpassword;
     WebView webView;
     Database DB;
-    ArrayList<ListItem> newsItemList;
-    ListAdapter adapter;
-    ListView listView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
 
+        txtusername=(TextView)findViewById(R.id.web_username);
+        txtpassword=(TextView)findViewById(R.id.web_password);
         DB=new Database(this);
         webAddress = findViewById(R.id.web_address);
         webView = findViewById(R.id.webSpace);
@@ -56,6 +57,7 @@ public class Web extends AppCompatActivity {
                 if(actionId== EditorInfo.IME_ACTION_DONE){
                     try {
                         String domain = getDomainName(webAddress.getText().toString());
+                        //server code
                         Cursor res = DB.getAllDataMaster();
                         res.moveToFirst();
                         String unicid = res.getString(0);
@@ -73,41 +75,17 @@ public class Web extends AppCompatActivity {
                                 Log.d("Android","onresponse method");
                                 String respo = "";
                                 try {
-                                    newsItemList = new ArrayList<>();
-                                    listView = (ListView) findViewById(R.id.user_list);
 
                                     respo = response.body().string();
                                     JSONObject respoJ = new JSONObject(respo);
                                     JSONArray ja_data = respoJ.getJSONArray("data");
-                                    int length = ja_data.length();
-                                    for(int i=0; i < length ; i++){
-                                        try {
-                                            JSONObject jsonObj = ja_data.getJSONObject(i);
+                                            JSONObject jsonObj = ja_data.getJSONObject(0);
                                             String name=jsonObj.getString("name");
                                             String pass=jsonObj.getString("password");
                                             String url=jsonObj.getString("url");
-                                            ListItem news = new ListItem();
-                                            news.website = url;
-                                            news.username = name;
-                                            news.password = pass;
-                                            newsItemList.add(news);
+                                            txtusername.setText(name);
+                                            txtpassword.setText(pass);
                                             Log.d("Dashboard", "Json Data : " + name+"\n"+pass+"\n"+url);
-                                        }
-                                        catch (ArrayIndexOutOfBoundsException e)
-                                        {
-                                            length--;
-                                        }
-                                    }
-                                    adapter = new ListAdapter(Web.this, newsItemList);
-                                    listView.setAdapter(adapter);
-                                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                        @Override
-                                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                            ListItem currentNews = newsItemList.get(position);
-
-                                        }
-                                    });
-
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 } catch (JSONException e) {
@@ -117,11 +95,12 @@ public class Web extends AppCompatActivity {
                             @Override
                             public void onFailure(Call<ResponseBody> call, Throwable t) {
                                 Toast.makeText(getApplicationContext(),
-                                        "Registration Failed!!!",
+                                        "Connection Error!!!",
                                         Toast.LENGTH_SHORT).show();
                                 return;
                             }
                         });
+
                     } catch (URISyntaxException e) {
                         e.printStackTrace();
                     }
@@ -158,4 +137,22 @@ public class Web extends AppCompatActivity {
         webView.loadUrl(url);
     }
 
+    public void copyUsername(View view)
+    {
+        final android.content.ClipboardManager clipboardManager = (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("Source Text", txtusername.getText());
+        clipboardManager.setPrimaryClip(clipData);
+        Toast.makeText(getApplicationContext(),
+                "Username Copied",
+                Toast.LENGTH_SHORT).show();
+    }
+    public void copyPassword(View view)
+    {
+        final android.content.ClipboardManager clipboardManager = (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("Source Text", txtpassword.getText());
+        clipboardManager.setPrimaryClip(clipData);
+        Toast.makeText(getApplicationContext(),
+                "Password Copied",
+                Toast.LENGTH_SHORT).show();
+    }
 }

@@ -129,7 +129,7 @@ public class AddPassword extends AppCompatActivity {
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
                     pd.dismiss();
                     Toast.makeText(getApplicationContext(),
-                            "Registration Failed!!!",
+                            "Add Failed!!!",
                             Toast.LENGTH_SHORT).show();
                     return;
                 }

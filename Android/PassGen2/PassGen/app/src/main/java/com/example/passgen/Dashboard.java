@@ -151,7 +151,7 @@ public class Dashboard extends AppCompatActivity
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),
-                        "Registration Failed!!!",
+                        "Connection Error!!!",
                         Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -245,7 +245,7 @@ public class Dashboard extends AppCompatActivity
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
                         Toast.makeText(getApplicationContext(),
-                                "Registration Failed!!!",
+                                "Connection Error!!!",
                                 Toast.LENGTH_SHORT).show();
                         return;
                     }
