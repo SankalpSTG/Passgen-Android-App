@@ -76,38 +76,6 @@ public class Dashboard extends AppCompatActivity
 
         refresh();
 
-        /*//listview
-        newsItemList = new ArrayList<>();
-        listView = (ListView) findViewById(R.id.user_list);
-
-        Cursor res = DB.getAllDataPassword();
-        if (res.getCount() == 0) {
-            Toast.makeText(Dashboard.this, "No data found", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        while (res.moveToNext()) {
-            String website,username,password;
-            website= res.getString(0);
-            username= res.getString(1);
-            password = res.getString(2);
-            ListItem news = new ListItem();
-            news.website = website;
-            news.username = username;
-            news.password = password;
-            newsItemList.add(news);
-        }
-        adapter = new ListAdapter(Dashboard.this, newsItemList);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ListItem currentNews = newsItemList.get(position);
-                Intent intent = new Intent(Dashboard.this, UpdatePassword.class);
-                intent.putExtra("putitem", currentNews);
-                startActivity(intent);
-            }
-        });*/
-
     }
     public void refresh()
     {

@@ -1,5 +1,6 @@
 package com.example.passgen;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -36,12 +37,18 @@ public class UpdatePassword extends AppCompatActivity {
     TextView txtconfirmpassword;
     TextView autogenrate;
     Button btnupdate,btndelete,btnedit;
+    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_password);
         //intilize
+        pd = new ProgressDialog(UpdatePassword.this);
+        pd.setMessage("please wait...");
+        pd.setCancelable(false);
+
+
         DB = new Database(this);
         etxtwebsite = (EditText)findViewById(R.id.etxt_website_edit);
         etxtusername =(EditText)findViewById(R.id.etxt_username_edit);
@@ -98,6 +105,7 @@ public class UpdatePassword extends AppCompatActivity {
 
         if(TextUtils.isEmpty(username) || TextUtils.isEmpty(password1)|| TextUtils.isEmpty(password2) || TextUtils.isEmpty(website))
         {
+            pd.dismiss();
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Fileds are empty",
                     Toast.LENGTH_SHORT);
@@ -105,6 +113,7 @@ public class UpdatePassword extends AppCompatActivity {
         }
         else if (!password1.equals(password2))
         {
+            pd.dismiss();
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Password does not match",
                     Toast.LENGTH_SHORT);
@@ -137,6 +146,7 @@ public class UpdatePassword extends AppCompatActivity {
                         JSONObject respoJ = new JSONObject(respo);
                         int code = respoJ.getInt("error_code");
                         String message = respoJ.getString("message");
+                        pd.dismiss();
                         if(code==100) {
                             Log.d("Android","getting response sucessful");
                         }
@@ -145,9 +155,11 @@ public class UpdatePassword extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                    pd.dismiss();
                 }
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    pd.dismiss();
                     Toast.makeText(getApplicationContext(),
                             "Updation Failed!!!",
                             Toast.LENGTH_SHORT).show();
@@ -169,7 +181,7 @@ public class UpdatePassword extends AppCompatActivity {
 
     public void deletePassword(View view)
     {
-
+        pd.show();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Delete Password!");
         builder.setMessage(" Do you really want to delete ?");
@@ -207,6 +219,7 @@ public class UpdatePassword extends AppCompatActivity {
                             JSONObject respoJ = new JSONObject(respo);
                             int code = respoJ.getInt("error_code");
                             String message = respoJ.getString("message");
+                            pd.dismiss();
                             if(code==100) {
                                 Log.d("Android","getting response sucessful "+respo);
                                 finish();
@@ -218,9 +231,11 @@ public class UpdatePassword extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        pd.dismiss();
                     }
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        pd.dismiss();
                         Toast.makeText(getApplicationContext(),
                                 "Registration Failed!!!",
                                 Toast.LENGTH_SHORT).show();
@@ -239,34 +254,6 @@ public class UpdatePassword extends AppCompatActivity {
 
         builder.show();
     }
-
-  /*
-   //Local Update Databse
-    public void setDB()
-    {
-        String username = etxtusername.getText().toString().trim();
-        String website = etxtwebsite.getText().toString().trim();
-        String password1 =etxtpassword1.getText().toString().trim();
-        Log.d("Android","local data Stored");
-        boolean isInserted = DB.updateDataPassword(website,username,password1,"");
-        if (isInserted == true) {
-            Log.d("UpdatePassword","updated local database");
-        }
-    }
-
-   //Local delete Databse
-    public void deleteDBPassword()
-    {
-        String username = etxtusername.getText().toString().trim();
-        String website = etxtwebsite.getText().toString().trim();
-        Log.d("Android","local data Stored");
-        int isInserted = DB.deleteDataPassword(website,username);
-        if (isInserted != 0) {
-            Log.d("UpdatePassword","updated local database");
-
-        }
-    }*/
-
     @Override
     public void onBackPressed() {
         finish();

@@ -1,5 +1,6 @@
 package com.example.passgen;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.provider.Settings;
@@ -35,7 +36,7 @@ public class Register extends AppCompatActivity {
     String secret_question;
     EditText etsecretanswer;
     Spinner acc_spinner;
-    int flag=0;
+    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,10 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         //intilize
+        pd = new ProgressDialog(Register.this);
+        pd.setMessage("Please wait...");
+        pd.setCancelable(false);
+
         DB = new Database(this);
         etxtunicid = (EditText)findViewById(R.id.etxt_usnicid_master_registration);
         etxtusername = (EditText)findViewById(R.id.etxt_username_master_registration);
@@ -81,6 +86,7 @@ public class Register extends AppCompatActivity {
 
     public void register_master(View view)
     {
+        pd.show();
         String unicid = etxtunicid.getText().toString().trim();
         String username = etxtusername.getText().toString().trim();
         String masterpassword1 =etxtmasterpassword1.getText().toString().trim();
@@ -89,24 +95,28 @@ public class Register extends AppCompatActivity {
 
         if (!Patterns.EMAIL_ADDRESS.matcher(unicid).matches())
         {
+            pd.dismiss();
             etxtunicid.setError("Enter a valied email ");
             etxtunicid.requestFocus();
             return;
         }
         if(username.isEmpty() || masterpassword1.isEmpty()|| masterpassword2.isEmpty() || secret_question.isEmpty() || secretanswer.isEmpty())
         {
+            pd.dismiss();
             Toast.makeText(getApplicationContext(),
                     "Fileds are empty",
                     Toast.LENGTH_SHORT).show();
         }
         else if (masterpassword1.length()<8)
         {
+            pd.dismiss();
             etxtmasterpassword1.setError("Password length minimum 8 character");
             etxtmasterpassword1.requestFocus();
             return;
         }
         else if (!masterpassword1.equals(masterpassword2))
         {
+            pd.dismiss();
             Toast.makeText(getApplicationContext(),
                     "Password does not match",
                     Toast.LENGTH_SHORT).show();
@@ -131,6 +141,8 @@ public class Register extends AppCompatActivity {
                         JSONObject respoJ = new JSONObject(respo);
                         int code = respoJ.getInt("error_code");
                         String message = respoJ.getString("message");
+
+                        pd.dismiss();
                         if(code==100) {
                             Log.d("Android","getting response sucessful");
                             setDB();
@@ -140,10 +152,13 @@ public class Register extends AppCompatActivity {
                         e.printStackTrace();
                     } catch (JSONException e) {
                         e.printStackTrace();
+                    } catch (Exception e){
+                        pd.dismiss();
                     }
                 }
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    pd.dismiss();
                     Toast.makeText(getApplicationContext(),
                             "Registration Failed!!!",
                             Toast.LENGTH_SHORT).show();

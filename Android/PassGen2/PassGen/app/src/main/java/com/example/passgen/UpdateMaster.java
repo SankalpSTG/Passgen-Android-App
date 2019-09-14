@@ -1,5 +1,6 @@
 package com.example.passgen;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.provider.Settings;
@@ -26,12 +27,18 @@ public class UpdateMaster extends AppCompatActivity {
     EditText etxtoldpassword;
     EditText etxtnewpassword1;
     EditText etxtnewpassword2;
+    ProgressDialog pd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_master);
 
         //intilize
+        pd = new ProgressDialog(UpdateMaster.this);
+        pd.setMessage("please wait...");
+        pd.setCancelable(false);
+
         DB = new Database(this);
         etxtoldpassword = (EditText)findViewById(R.id.etxt_old_master_password_update);
         etxtnewpassword1 =(EditText)findViewById(R.id.etxt_new_master_password_update);
@@ -40,12 +47,14 @@ public class UpdateMaster extends AppCompatActivity {
 
     public void updateMaster(View view)
     {
+        pd.show();
         String oldpassword = etxtoldpassword.getText().toString().trim();
         String newpassword1 = etxtnewpassword1.getText().toString().trim();
         String newpassword2 = etxtnewpassword2.getText().toString().trim();
 
         if(oldpassword.isEmpty() || newpassword1.isEmpty()|| newpassword2.isEmpty())
         {
+            pd.dismiss();
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Fileds are empty",
                     Toast.LENGTH_SHORT);
@@ -53,6 +62,7 @@ public class UpdateMaster extends AppCompatActivity {
         }
         else if (!newpassword1.equals(newpassword2))
         {
+            pd.dismiss();
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Password does not match",
                     Toast.LENGTH_SHORT);
@@ -86,6 +96,7 @@ public class UpdateMaster extends AppCompatActivity {
                         JSONObject respoJ = new JSONObject(respo);
                         int code = respoJ.getInt("error_code");
                         String message = respoJ.getString("message");
+                        pd.dismiss();
                         if(code==100) {
                             Log.d("Android","code 100");
                             Toast.makeText(getApplicationContext(), "Updated Sucessful",
@@ -100,9 +111,11 @@ public class UpdateMaster extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                    pd.dismiss();
                 }
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    pd.dismiss();
                     Toast.makeText(getApplicationContext(),
                             "Registration Failed!!!",
                             Toast.LENGTH_SHORT).show();

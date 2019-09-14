@@ -1,5 +1,6 @@
 package com.example.passgen;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.provider.Settings;
@@ -28,11 +29,17 @@ public class LoginMaster extends AppCompatActivity {
     boolean eye_1_pressed = false;
     ImageView eye_1;
     EditText etxtpassword;
+    ProgressDialog pd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_master);
         //initilize
+        pd = new ProgressDialog(LoginMaster.this);
+        pd.setMessage("please wait...");
+        pd.setCancelable(false);
+
         eye_1 = findViewById(R.id.pass_dola);
         DB = new Database(this);
         etxtpassword = (EditText)findViewById(R.id.etxt_password_login_main);
@@ -54,6 +61,7 @@ public class LoginMaster extends AppCompatActivity {
     }
     public void login_master(View view)
     {
+        pd.show();
         //local Databse code
         Cursor res = DB.getAllDataMaster();
         res.moveToFirst();
@@ -62,6 +70,7 @@ public class LoginMaster extends AppCompatActivity {
         String password = etxtpassword.getText().toString();
         if(password.isEmpty() || unicid.isEmpty())
         {
+            pd.dismiss();
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Fields are empty",
                     Toast.LENGTH_SHORT);
@@ -91,6 +100,7 @@ public class LoginMaster extends AppCompatActivity {
                             JSONObject respoJ = new JSONObject(respo);
                             int code = respoJ.getInt("error_code");
                             String message = respoJ.getString("message");
+                            pd.dismiss();
                             if(code==100) {
                                 Log.d("Android","code 100");
                                 Toast.makeText(getApplicationContext(), "Log-In Successful",
@@ -108,6 +118,7 @@ public class LoginMaster extends AppCompatActivity {
                     }
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        pd.dismiss();
                         Toast.makeText(getApplicationContext(),
                                 "Login Failed!!!",
                                 Toast.LENGTH_SHORT).show();
@@ -117,11 +128,13 @@ public class LoginMaster extends AppCompatActivity {
             }
             else
             {
+                pd.dismiss();
                 Toast toast = Toast.makeText(getApplicationContext(),
                         "Incorrect Password",
                         Toast.LENGTH_SHORT);
                 toast.show();
             }
+            pd.dismiss();
         }
     }
 }

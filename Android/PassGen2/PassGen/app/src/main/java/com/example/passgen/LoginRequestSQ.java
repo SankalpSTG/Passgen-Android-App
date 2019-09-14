@@ -1,5 +1,6 @@
 package com.example.passgen;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
@@ -25,10 +26,15 @@ public class LoginRequestSQ extends AppCompatActivity {
     Button requestBut;
     EditText et_answer;
     String unicid;
+    ProgressDialog pd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_request_sq);
+        pd = new ProgressDialog(LoginRequestSQ.this);
+        pd.setMessage("please wait...");
+        pd.setCancelable(false);
 
         String question=getIntent().getStringExtra("question");
         unicid=getIntent().getStringExtra("unicid");
@@ -41,6 +47,7 @@ public class LoginRequestSQ extends AppCompatActivity {
         requestBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pd.show();
                 String answer=et_answer.getText().toString();
                 String device = Settings.Secure.getString(getContentResolver(),
                         Settings.Secure.ANDROID_ID);
@@ -59,6 +66,7 @@ public class LoginRequestSQ extends AppCompatActivity {
                             JSONObject respoJ = new JSONObject(respo);
                             int code = respoJ.getInt("error_code");
                             String message = respoJ.getString("message");
+                            pd.dismiss();
                             if(code==100) {
                                 Intent i = new Intent(LoginRequestSQ.this, LoginRequestResponse.class);
                                 startActivity(i);
@@ -70,10 +78,11 @@ public class LoginRequestSQ extends AppCompatActivity {
                             e.printStackTrace();
                         } catch (JSONException e) {
                             e.printStackTrace();
-                        }
+                        }pd.dismiss();
                     }
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        pd.dismiss();
                         Toast.makeText(getApplicationContext(),
                                 "Request Failed!!!",
                                 Toast.LENGTH_SHORT).show();

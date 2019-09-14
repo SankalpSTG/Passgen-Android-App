@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -62,6 +63,7 @@ public class ListAdapter extends BaseAdapter
                 ClipData clipData = ClipData.newPlainText("Source Text", ""+pass);
                 clipboardManager.setPrimaryClip(clipData);
                 Log.d("",""+pass);
+                Toast.makeText(context, "Password Copied", Toast.LENGTH_SHORT).show();
             }
         });
         website.setText(currentNews.website);

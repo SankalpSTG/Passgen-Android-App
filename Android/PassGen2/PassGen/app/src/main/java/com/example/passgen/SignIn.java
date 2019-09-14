@@ -1,5 +1,6 @@
 package com.example.passgen;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
@@ -24,11 +25,17 @@ public class SignIn extends AppCompatActivity {
     Database DB;
     EditText etxtusername;
     EditText etxtpassword;
+    ProgressDialog pd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         //initilal
+        pd = new ProgressDialog(SignIn.this);
+        pd.setMessage("please wait...");
+        pd.setCancelable(false);
+
         DB = new Database(this);
         etxtusername = (EditText)findViewById(R.id.unicid_EditText);
         etxtpassword = (EditText)findViewById(R.id.password_EditText);
@@ -36,11 +43,13 @@ public class SignIn extends AppCompatActivity {
 
     public void verifyLogin(View view)
     {
+        pd.show();
         //local Databse code
         String unicid = etxtusername.getText().toString();
         String password = etxtpassword.getText().toString();
         if(password.isEmpty())
         {
+            pd.dismiss();
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Password is empty",
                     Toast.LENGTH_SHORT);
@@ -67,6 +76,7 @@ public class SignIn extends AppCompatActivity {
                         JSONObject respoJ = new JSONObject(respo);
                         int code = respoJ.getInt("error_code");
                         String message = respoJ.getString("message");
+                        pd.dismiss();
                         if(code==100) {
                             Log.d("Android","code 100 login sucessful");
                             setDB();
@@ -80,9 +90,11 @@ public class SignIn extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                    pd.dismiss();
                 }
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    pd.dismiss();
                     Toast.makeText(getApplicationContext(),
                             "Registration Failed!!!",
                             Toast.LENGTH_SHORT).show();

@@ -1,5 +1,6 @@
 package com.example.passgen;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
@@ -23,10 +24,16 @@ import retrofit2.Response;
 public class LoginRequest extends AppCompatActivity {
     Button requestButton;
     EditText email, password, secretanswer;
+    ProgressDialog pd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_request);
+        pd = new ProgressDialog(LoginRequest.this);
+        pd.setMessage("please wait...");
+        pd.setCancelable(false);
+
         email = findViewById(R.id.unicid_EditText);
         password = findViewById(R.id.password_EditText);
         secretanswer = findViewById(R.id.secretanswer);
@@ -40,6 +47,7 @@ public class LoginRequest extends AppCompatActivity {
         });
     }
     private void getAccess(){
+        pd.show();
         final String unicid,masterpassword;
         unicid=email.getText().toString();
         masterpassword=password.getText().toString();
@@ -57,6 +65,7 @@ public class LoginRequest extends AppCompatActivity {
                     JSONObject respoJ = new JSONObject(respo);
                     int code = respoJ.getInt("error_code");
                     String message = respoJ.getString("message");
+                    pd.dismiss();
                     if(code==100) {
                         String scretequestion=respoJ.getString("data");
                         Intent i = new Intent(LoginRequest.this, LoginRequestSQ.class);
@@ -72,9 +81,11 @@ public class LoginRequest extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                pd.dismiss();
             }
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                pd.dismiss();
                 Toast.makeText(getApplicationContext(),
                         "Request Failed!!!",
                         Toast.LENGTH_SHORT).show();

@@ -1,5 +1,6 @@
 package com.example.passgen;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.provider.Settings;
@@ -31,12 +32,17 @@ public class AddPassword extends AppCompatActivity {
     EditText etxtpassword1;
     EditText etxtpassword2;
     TextView autogenerate;
+    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_password);
         //intilize
+        pd = new ProgressDialog(AddPassword.this);
+        pd.setMessage("please wait...");
+        pd.setCancelable(false);
+
         DB = new Database(this);
         etxtwebsite = (EditText)findViewById(R.id.etxt_website_registration);
         etxtusername =(EditText)findViewById(R.id.etxt_username_registration);
@@ -58,57 +64,55 @@ public class AddPassword extends AppCompatActivity {
         etxtpassword1.setInputType(InputType.TYPE_CLASS_TEXT |
                 InputType.TYPE_TEXT_VARIATION_NORMAL);
     }
-    public void addPassword(View view)
-    {
+    public void addPassword(View view) {
+        pd.show();
         String username = etxtusername.getText().toString().trim();
         String website = etxtwebsite.getText().toString().trim();
-        String password1 =etxtpassword1.getText().toString().trim();
+        String password1 = etxtpassword1.getText().toString().trim();
         String password2 = etxtpassword2.getText().toString().trim();
 
-        if(TextUtils.isEmpty(username) || TextUtils.isEmpty(password1)|| TextUtils.isEmpty(password2) || TextUtils.isEmpty(website))
-        {
+        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password1) || TextUtils.isEmpty(password2) || TextUtils.isEmpty(website)) {
+            pd.dismiss();
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Fileds are empty",
                     Toast.LENGTH_SHORT);
             toast.show();
-        }
-        else if (!password1.equals(password2))
-        {
+        } else if (!password1.equals(password2)) {
+            pd.dismiss();
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Password does not match",
                     Toast.LENGTH_SHORT);
             toast.show();
-        }
-        else
-        {
-            Log.d("Add Password","starting Master databse");
+        } else {
+            Log.d("Add Password", "starting Master databse");
             Cursor res = DB.getAllDataMaster();
             res.moveToFirst();
             String unicid = res.getString(0);
-            Log.d("Android","getting response 1"+unicid);
+            Log.d("Android", "getting response 1" + unicid);
             String device = Settings.Secure.getString(getContentResolver(),
                     Settings.Secure.ANDROID_ID);
-            String auth=RandomString.getAlphaNumericString(10);
-            Log.d("Add Password","Master databse end");
+            String auth = RandomString.getAlphaNumericString(10);
+            Log.d("Add Password", "Master databse end");
 
 
             //server code
-            Call<ResponseBody> call= RetrofitClient.getInstance()
+            Call<ResponseBody> call = RetrofitClient.getInstance()
                     .getApiPassword()
-                    .add_password(unicid,auth,device,website,username,password1);
-            Log.d("Add Password","Respons  get");
+                    .add_password(unicid, auth, device, website, username, password1);
+            Log.d("Add Password", "Respons  get");
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    Log.d("Android","onresponse");
+                    Log.d("Android", "onresponse");
                     String respo = "";
                     try {
                         respo = response.body().string();
                         JSONObject respoJ = new JSONObject(respo);
                         int code = respoJ.getInt("error_code");
                         String message = respoJ.getString("message");
-                        if(code==100) {
-                            Log.d("Android","getting response sucessful");
+                        pd.dismiss();
+                        if (code == 100) {
+                            Log.d("Android", "getting response sucessful");
                             Intent i = new Intent(AddPassword.this, Dashboard.class);
                             startActivity(i);
                             finish();
@@ -118,9 +122,12 @@ public class AddPassword extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                    pd.dismiss();
                 }
+
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    pd.dismiss();
                     Toast.makeText(getApplicationContext(),
                             "Registration Failed!!!",
                             Toast.LENGTH_SHORT).show();
@@ -130,20 +137,4 @@ public class AddPassword extends AppCompatActivity {
         }
     }
 
-   /* //Local Databse
-    public void setDB()
-    {
-        String username = etxtusername.getText().toString().trim();
-        String website = etxtwebsite.getText().toString().trim();
-        String password1 =etxtpassword1.getText().toString().trim();
-        String password2 = etxtpassword2.getText().toString().trim();
-        Log.d("Android","local data Stored");
-        boolean isInserted = DB.insertDataPassword(website,username,password1,"");
-        if (isInserted == true) {
-            Toast.makeText(getApplicationContext(),
-                    "Adding Sucessful!!!",
-                    Toast.LENGTH_SHORT).show();
-
-        }
-    }*/
 }

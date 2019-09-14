@@ -25,6 +25,8 @@
             android:text="Login"
             android:textColor="@color/color_white" />
 
+
+
         <ImageView
             android:id="@+id/reg_logo"
             android:layout_width="128dp"
