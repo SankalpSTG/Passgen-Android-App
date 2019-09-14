@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title>Useless</title>
+		<script src="script.js"></script>
+		<script src="requests.js"></script>
+		<script src="passgen.js"></script>
+		<script src="qrcode/qrcode.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div id="c-container">
+			<div id="c-header">
+				<div id="c-headimage-container">
+					<img class="c-headimage"src="images/icons/passgen-96.png">
+				</div>
+				<div id="c-title">
+					<h1 class="c-title-main">
+						<span class="darkgreen">P</span>
+						<span class="lightgreen">ass</span>
+						<span class="darkgreen">G</span>
+						<span class="lightgreen">en</span>
+					</h1>
+					<p class="c-title-sub">
+						Online Password Manager
+					</p>
+				</div>
+			</div>
+			<div id="c-body">
+				<div id="upper-body">
+					<h2 id="login-text" class="messagetext2 hidden-text">Scan QR Code to login</h2>
+					<button id="getpasswordbutton" class="c-def-buts">
+						Get Password
+					</button>
+				</div>
+				<div id="mid-body">
+					<h2 id = "failed-text" class="messagetext hidden-text">Failed!</h2>
+					<button id="authfetchretry" class="c-def-buts hidden-buts">
+						Retry
+					</button>
+					<button id="reshowqrcode" class="c-def-buts hidden-buts">
+						Show QR Code
+					</button>
+					<div id="midplay">
+						<div id="qrspace">
+						</div>
+					</div>
+				</div>
+				<div id="lower-body">
+					<button id="qrcodedone" class="c-def-buts hidden-buts">
+						Done
+					</button>
+				</div>
+				<script src="button1.js"></script>
+			</div>
+		</div>
+		<footer>
+			A Project By STARMAN
+		</footer>
+	</body>
+</html>

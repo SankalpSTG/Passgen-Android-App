@@ -1,0 +1,138 @@
+head, body{
+	width:320px;
+	max-width:100%;
+	text-align:center;
+	background:#222;
+	font-family:Calisto MT;
+	transition:0.5s linear;
+	margin:0px;
+}
+#c-page1{
+	width:100%;
+	margin:0px;
+}
+#c-page2{
+	display:none;
+	width:100%;
+	margin:0px auto;
+}
+#c-page3{
+	display:none;
+	width:100%;
+}
+#c-page4{
+	display:none;
+	width:100%;
+}
+#c-page5{
+	display:none;
+	width:100%;
+}
+#c-page6{
+	display:none;
+	width:100%;
+}
+select{
+	height:36px;
+	color:#aaa;
+	background:#222;
+	min-width:200px;
+	border-radius:5px;
+	border-color:#000;
+}
+.passwordfields{
+	height:36px;
+	color:#aaa;
+	background:#222;
+	min-width:200px;
+	border-radius:5px;
+	border-color:#000;
+}
+#qrspace{
+	position:relative;
+	text-align:center;
+	width:128px;
+	margin:0px auto;
+}
+#c-container{
+	position:relative;
+	text-align:center;
+	width:100%;
+	margin:10px auto;
+}
+.c-headimage{
+	position:relative;
+	text-align:center;
+	width:64px;
+	height:64px;
+}
+.darkgreen{
+	color:rgba(56, 72, 23, 1);
+}
+.lightgreen{
+	color:rgba(146, 172, 53, 1);
+}
+.simple_grey{
+	color:#737373;
+}
+.c-title-main{
+	position:relative;
+	text-align:center;
+	font-family:Agency FB;
+	font-size:20px;
+	color:rgba(156, 172, 53, 1);
+	font-weight:bold;
+}
+h1{
+	margin:0px;
+}
+
+.c-title-sub{
+	position:relative;
+	text-align:center;
+	color:#737373;
+	font-family:Calisto MT;
+	font-size:14px;
+}
+.c-def-buts{
+	position:relative;
+	text-align:center;
+	width:150px;
+	height:30px;
+	margin:0px auto;
+	transition:0.25s linear;
+	color:#000;
+	background:rgba(146, 172, 53, 1);
+	border:0px;
+	border-radius:5px 5px;
+}
+.c-def-buts:hover{
+	background:rgba(56, 72, 23, 1);
+	color:#000;
+}
+hr{
+	position:relative;
+	text-align:center;
+	width:100%;
+	border-color:#444;
+}
+.hidden-buts{
+	display:none;
+}
+.hidden-text{
+	display:none;
+}
+.messagetext{
+	color:#b00;
+}
+.messagetext2{
+	color:#737373;
+}
+footer{
+	bottom:0px;
+	position:relative;
+	text-align:center;
+	width:100%;
+	color:#737373;
+	margin: 10px auto;
+}
