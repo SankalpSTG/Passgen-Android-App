@@ -14,13 +14,10 @@ import android.widget.TextView;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-public class MainActivity extends AppCompatActivity {
     EditText webAddress;
     WebView webView;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+
         webAddress = findViewById(R.id.web_address);
         webView = findViewById(R.id.webSpace);
         webAddress.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -65,4 +62,3 @@ public class MainActivity extends AppCompatActivity {
     public void goToUrl(String url){
         webView.loadUrl(url);
     }
-}

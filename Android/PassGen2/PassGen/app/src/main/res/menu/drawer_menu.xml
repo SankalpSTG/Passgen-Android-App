@@ -7,19 +7,23 @@
         <item
             android:id="@+id/dashbord"
             android:icon="@drawable/ic_dashboard_black_24dp"
-            android:title="dashbord" />
+            android:title="DASHBOARD" />
+        <item
+            android:id="@+id/web"
+            android:icon="@drawable/ic_web_asset_black_24dp"
+            android:title="WEB" />
         <item
             android:id="@+id/scanweb"
             android:icon="@drawable/ic_web_asset_black_24dp"
-            android:title="scanweb" />
+            android:title="SCANWEB" />
         <item
             android:id="@+id/settings"
             android:icon="@drawable/ic_settings_black_24dp"
-            android:title="Settings"/>
+            android:title="SETTINGS"/>
         <item
             android:id="@+id/logout"
             android:icon="@drawable/ic_logout"
-            android:title="Log-out"/>
+            android:title="LOG-OUT"/>
     </group>
 
     <item android:title="Communicate">

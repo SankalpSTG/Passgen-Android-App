@@ -85,6 +85,8 @@ public class ScanCodeActivity extends Activity implements ZXingScannerView.Resul
                     JSONObject respoJ = new JSONObject(respo);
                    String message = respoJ.getString("message");
                         Log.d("Android",message);
+                    int code = respoJ.getInt("error_code");
+                    if(code==100) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(ScanCodeActivity.this);
                         builder.setTitle("Alert dialog demo !");
                         builder.setMessage("Access Granted");
@@ -99,7 +101,10 @@ public class ScanCodeActivity extends Activity implements ZXingScannerView.Resul
                             }
                         });
                         builder.show();
-                    Toast.makeText(getApplicationContext(), "Got Response : " + message, Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Got Response : " + message, Toast.LENGTH_SHORT).show();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {

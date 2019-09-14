@@ -292,12 +292,18 @@ public class Dashboard extends AppCompatActivity
         }
         return super.onOptionsItemSelected(item);
     }
-
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
     //Navigation drawer action
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id=item.getItemId();
         if (id == R.id.dashbord) {
+        } else if (id == R.id.web) {
+            Intent i=new Intent(Dashboard.this,Web.class);
+            startActivity(i);
         } else if (id == R.id.scanweb) {
             Intent i=new Intent(Dashboard.this,ScanCodeActivity.class);
             startActivity(i);
