@@ -57,16 +57,12 @@ public class IntroActivity extends AppCompatActivity {
 
         final List<ScreenItem> mList = new ArrayList<>();
         mList.add(new ScreenItem(R.drawable.image1));
-        mList.add(new ScreenItem(R.drawable.page1));
-        //mList.add(new ScreenItem(R.drawable.page2));
-        //mList.add(new ScreenItem(R.drawable.page3));
-        //mList.add(new ScreenItem(R.drawable.page4));
-        //mList.add(new ScreenItem(R.drawable.page5));
-        //mList.add(new ScreenItem(R.drawable.page6));
-        //mList.add(new ScreenItem(R.drawable.page7));
-        //mList.add(new ScreenItem(R.drawable.page8));
-        //mList.add(new ScreenItem(R.drawable.page9));
-        //mList.add(new ScreenItem(R.drawable.page10));
+        mList.add(new ScreenItem(R.drawable.page_1_png));
+        mList.add(new ScreenItem(R.drawable.page_2_png));
+        mList.add(new ScreenItem(R.drawable.page_2_png));
+        mList.add(new ScreenItem(R.drawable.page_2_png));
+
+
 
         // setup viewpager
         screenPager =findViewById(R.id.screen_viewpager);
